@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EagleInsight - Airline Business Intelligence</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Effects -->
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+    <div class="container">
+        <!-- Header -->
+        <header class="hero-panel">
+            <div class="hero-content">
+                <p class="hero-tag">
+                    AIRLINE REVIEW ANALYTICS PLATFORM
+                </p>
+                <h1 class="hero-title">
+                    EagleInsight
+                </h1>
+                <p class="hero-description">
+                    EagleInsight is a business intelligence platform designed
+                    to transform airline customer reviews into actionable
+                    business insights. By analyzing passenger feedback datasets,
+                    the platform identifies service improvement opportunities,
+                    customer priorities, operational challenges, and strategic
+                    recommendations to support data-driven decision making.
+                </p>
+            </div>
+        </header>
+        <!-- Summary Metrics -->
+        <section class="metric-grid">
+            <div class="metric-card">
+                <span class="metric-label">
+                    Total Reviews
+                </span>
+                <h2 id="totalReviews">
+                    0
+                </h2>
+            </div>
+            <div class="metric-card">
+                <span class="metric-label">
+                    Recommended Predictions
+                </span>
+                <h2 id="recommendedReviews">
+                    0
+                </h2>
+                <small>Predicted yes responses</small>
+            </div>
+            <div class="metric-card">
+                <span class="metric-label">
+                    Predicted Not Recommended
+                </span>
+                <h2 id="notRecommendedReviews">
+                    0
+                </h2>
+                <small>Predicted no responses</small>
+            </div>
+            <div class="metric-card">
+                <span class="metric-label">
+                    Average Confidence
+                </span>
+                <h2 id="averageConfidence">
+                    0.0%
+                </h2>
+                <small>Mean model probability for the positive class</small>
+            </div>
+        </section>
+        <!-- Upload Section -->
+        <section class="panel">
+            <div class="section-header">
+                <h2>
+                    Review Dataset Upload
+                </h2>
+                <p>
+                    Upload a CSV dataset containing airline passenger reviews.
+                    The system will process the uploaded data and generate
+                    business insights based on customer sentiment, recurring
+                    issues, and operational priorities.
+                </p>
+            </div>
+            <div class="upload-container">
+                <label for="csvUpload" class="upload-box">
+                    <div class="upload-content">
+                        <h3>
+                            Upload CSV Dataset
+                        </h3>
+                        <p>
+                            Drag and drop a CSV file or click to browse.
+                        </p>
+                    </div>
+                    <input
+                        type="file"
+                        id="csvUpload"
+                        accept=".csv"
+                    >
+                </label>
+                <div class="upload-status">
+                    <div class="status-item">
+                        <span class="status-label">
+                            Selected File
+                        </span>
+                        <span id="selectedFile">
+                            No file selected
+                        </span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">
+                            Processing Status
+                        </span>
+                        <span id="processingStatus">
+                            Waiting for upload
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Priority Matrix -->
+        <section class="panel">
+            <div class="section-header">
+                <h2>
+                    Business Priority Matrix
+                </h2>
+                <p>
+                    Identified issues and recommendations are categorized
+                    according to business impact and implementation effort.
+                    This framework assists stakeholders in prioritizing
+                    improvement initiatives.
+                </p>
+            </div>
+            <div class="matrix-wrapper">
+                <div class="matrix-y-top">
+                    HIGH IMPACT
+                </div>
+                <div class="matrix-y-bottom">
+                    LOW IMPACT
+                </div>
+                <div class="matrix-x-left">
+                    EASY IMPLEMENTATION
+                </div>
+                <div class="matrix-x-right">
+                    HARD IMPLEMENTATION
+                </div>
+                <div class="matrix-grid-container">
+                    <!-- Quadrant 1 -->
+                    <div class="quadrant quadrant-priority">
+                        <div class="quadrant-header">
+                            Priority Target
+                        </div>
+                        <div class="quadrant-description">
+                            High impact initiatives with relatively low implementation effort.
+                        </div>
+                        <div
+                            class="quadrant-content"
+                            id="priorityTarget"
+                        >
+                            No insights available.
+                        </div>
+                    </div>
+                    <!-- Quadrant 2 -->
+                    <div class="quadrant quadrant-project">
+                        <div class="quadrant-header">
+                            Major Projects
+                        </div>
+                        <div class="quadrant-description">
+                            High impact initiatives requiring significant implementation effort.
+                        </div>
+                        <div
+                            class="quadrant-content"
+                            id="majorProjects"
+                        >
+                            No insights available.
+                        </div>
+                    </div>
+                    <!-- Quadrant 3 -->
+                    <div class="quadrant quadrant-fill">
+
+                        <div class="quadrant-header">
+                            Fill-ins
+                        </div>
+                        <div class="quadrant-description">
+                            Low impact initiatives with minimal implementation effort.
+                        </div>
+                        <div
+                            class="quadrant-content"
+                            id="fillIns"
+                        >
+                            No insights available.
+                        </div>
+                    </div>
+                    <!-- Quadrant 4 -->
+                    <div class="quadrant quadrant-ignore">
+                        <div class="quadrant-header">
+                            Not Important
+                        </div>
+
+                        <div class="quadrant-description">
+                            Low impact initiatives with high implementation effort.
+                        </div>
+                        <div class="quadrant-content" id="notImportant">
+                            No insights available.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Business Insights -->
+        <section class="panel">
+
+            <div class="section-header">
+                <h2>
+                    Generated Business Insights
+                </h2>
+                <p>
+                    Insights extracted from customer reviews will be displayed
+                    below after the analysis process has been completed.
+                </p>
+            </div>
+            <div class="insight-table-wrapper">
+                <table class="insight-table">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Issue</th>
+                            <th>Frequency</th>
+                            <th>Sentiment</th>
+                            <th>Priority</th>
+                        </tr>
+                    </thead>
+                    <tbody id="insightTableBody">
+                        <tr>
+                            <td colspan="5" class="empty-state">
+                                No analysis results available.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <!-- Footer -->
+        <footer class="footer">
+            <p>
+                EagleInsight © 2026
+            </p>
+            <p>
+                Airline Business Intelligence and Customer Review Analytics Platform
+            </p>
+        </footer>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>
